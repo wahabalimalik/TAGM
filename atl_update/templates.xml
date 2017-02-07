@@ -1,0 +1,36 @@
+<openerp>
+    <data>
+        <!--========================[Form View-START]=====================-->
+            <!-- 
+                Adding a Filer field in sale module / in customer form (below Website field)
+             -->
+            <record id="filer_view_form" model="ir.ui.view">
+                <field name="name">filer_view_form</field>
+                <field name="model">res.partner</field>
+                <field name="inherit_id" ref="base.view_partner_form"/>
+                <field name="type">form</field>
+                <field name="arch" type="xml">
+                    <xpath expr="//field[@name='website']" position="after">
+                        <field name="filer"/>
+                        <field name="registration_no"/>
+                    </xpath>
+                </field>
+            </record>
+        <!--************************[Form View-ENDS]**********************-->
+
+        <!--========================[Action-START]========================-->
+            <record model="ir.actions.act_window" id="action_atl_updation">
+                <field name="name">ATL Updation</field>
+                <field name="res_model">atl.updation.wizard</field>
+                <field name="view_type">form</field>
+                <field name="view_mode">form</field>
+                <field name="target">new</field>
+            </record>
+        <!--************************[Action-ENDS]*************************-->
+
+        <!--========================[Menu-START]==========================-->
+        
+            <menuitem name="ATL Updation" id="atl_updation_child_child" parent="base.menu_sales" action="action_atl_updation" sequence="7"/> 
+        <!--************************[Menu-ENDS]***************************-->
+    </data>
+</openerp>

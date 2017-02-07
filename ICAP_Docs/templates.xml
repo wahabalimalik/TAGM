@@ -1,0 +1,303 @@
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="hr_details_of_management_personnal_extenssion_form_view">
+            <field name="name">hr.details.of.management.personnal.extenssion.form</field>
+            <field name="model">hr.details.of.management.personnal.extenssion</field>
+            <field name="arch" type="xml">
+                <form string="Course Form">
+                    <sheet>
+                        <group>
+                            <field name="date"/>
+                            <!-- <field name="description"/> -->
+                        </group>
+                        <notebook>
+                            <page string="Details of Partners/Sole Peoprietor">    
+                                <field name="relation_id" nolabel='1'>
+                                    <tree editable="bottom">
+										<field name="client_name"/>
+                                        <field name="membership_number"/>
+										<field name="date_membership"/>
+										<field name="post_quali_prac"/>
+										<field name="post_quali_other"/>
+										<field name="entitlements"/>
+                                    </tree>
+                                </field>
+                            </page>
+						</notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!--  -->
+        <record model="ir.actions.act_window" id="hr_details_of_management_list_action">
+            <field name="name">Detail Of Management Personnel</field>
+            <field name="res_model">hr.details.of.management.personnal.extenssion</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <!--  -->
+        <menuitem id="hr_menu_item" name="Detail Of Management Personnel" parent="hr.menu_hr_main" action="hr_details_of_management_list_action"/>
+        <!--  -->
+        <!--  -->
+        <!--  -->
+        <record model="ir.ui.view" id="hr_details_training_offices_extenssion_form_view">
+            <field name="name">hr.details.training.offices.extenssion.form</field>
+            <field name="model">hr.details.training.offices.extenssion</field>
+            <field name="arch" type="xml">
+                <form string="Course Form">
+                    <sheet>
+                        <group>
+                            <group position='left'>
+                                <field name="name_org"/>
+                                <field name="address"/>
+                                <field name="city_town"/>
+                                <field name="country"/>
+                                <field name="phone"/>
+                                <field name="fax"/>
+                                <field name="email"/>
+                                <field name="name_mrs"/>
+                            </group>
+                            <group position='right'>
+                                <field name="membership_number"/>
+                                <field name="date_membership"/>
+                                <field name="phone_mrs"/>
+                                <field name="fax_mrs"/>
+                                <field name="email_mrs"/>
+                                <field name="num_partner"/>
+                                <field name="num_employed"/>
+                                <field name="num_tech_supervisors_partnr"/>
+                                <field name="num_tech_supervisors_employee"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!--  -->
+        <record model="ir.actions.act_window" id="hr_details_training_offices_action">
+            <field name="name">Detail Of Other Training Offices</field>
+            <field name="res_model">hr.details.training.offices.extenssion</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <!--  -->
+        <menuitem id="hr_menu_item_1" name="Detail Of Other Training Offices" parent="hr.menu_hr_main" action="hr_details_training_offices_action"/>
+        <!--  -->
+        <!--  -->
+        <!--  -->
+        <record model="ir.ui.view" id="hr_details_of_audit_form_view">
+            <field name="name">hr.details.of.audit.form</field>
+            <field name="model">hr.details.of.audit</field>
+            <field name="arch" type="xml">
+                <form string="Course Form">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <!-- <field name="description"/> -->
+                        </group>
+                        <notebook>
+                            <page string="Details of Audits">    
+                                <field name="relation_id_1" nolabel='1'>
+                                    <tree editable="bottom">
+                                        <field name="client_name"/>
+                                        <field name="client_address"/>
+                                        <field name="nature_of_business"/>
+                                        <field name="public_solo_others"/>
+                                        <field name="paid_up_capital" sum="Total"/>
+                                        <field name="remarks"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!--  -->
+        <record model="ir.actions.act_window" id="hr_detail_of_audit">
+            <field name="name">Detail Of Audit</field>
+            <field name="res_model">hr.details.of.audit</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <!--  -->
+        <menuitem id="hr_menu_item_2" name="Detail Of Audit" parent="hr.menu_hr_main" action="hr_detail_of_audit"/>
+        <!--  -->
+        <!--  -->
+        <!--  -->
+        <record model="ir.ui.view" id="hr_declaration_form_view">
+            <field name="name">hr.declaration.form</field>
+            <field name="model">hr.declaration</field>
+            <field name="arch" type="xml">
+                <form string="Course Form">
+                    <sheet>
+                        <group>
+                            <field name="name_org"/>
+                            <field name="place"/>
+                            <field name="date"/>
+                            <field name="name"/>
+                            <field name="designation"/>
+                            <field name="on_behalf_of"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!--  -->
+        <record model="ir.actions.act_window" id="hr_declaration">
+            <field name="name">Declaration</field>
+            <field name="res_model">hr.declaration</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <!--  -->
+        <menuitem id="hr_menu_item_3" name="Declaration" parent="hr.menu_hr_main" action="hr_declaration"/>
+        <!--  -->
+        <!--  -->
+                <record model="ir.ui.view" id="hr_office_form_view">
+            <field name="name">hr.office.form</field>
+            <field name="model">hr.officess</field>
+            <field name="arch" type="xml">
+                <form string="Office Location">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="Office_address"/>
+                            <field name="city"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!--  -->
+        <record model="ir.actions.act_window" id="hr_office_location">
+            <field name="name">Office</field>
+            <field name="res_model">hr.officess</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <!--  -->
+        <menuitem id="hr_menu_item_9" name="Office Location" parent="hr.menu_hr_configuration" action="hr_office_location"/>
+ 
+        <!--  -->
+        <record model="ir.ui.view" id="hr_undertaking_form_view">
+            <field name="name">hr.undertaking.form</field>
+            <field name="model">hr.undertaking</field>
+            <field name="arch" type="xml">
+                <form string="Course Form">
+                    <sheet>
+                        <group>
+                            <field name="member_name"/>
+                            <field name="membership_number"/>
+                            <field name="designation"/>
+                            <field name="mrs"/>
+                            <field name="training_office_add"/>
+                            <field name="place"/>
+                            <field name="date"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!--  -->
+        <record model="ir.actions.act_window" id="hr_undertaking">
+            <field name="name">Undertaking</field>
+            <field name="res_model">hr.undertaking</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <!--  -->
+        <menuitem id="hr_menu_item_4" name="Undertaking" parent="hr.menu_hr_main" action="hr_undertaking"/>
+        <!--  -->
+        <!--  -->
+        <!--  -->
+        <record model="ir.ui.view" id="hr_registration_form_view">
+            <field name="name">hr.registration.form</field>
+            <field name="model">hr.registration</field>
+            <field name="arch" type="xml">
+                <form string="Course Form">
+                    <sheet>
+                        <group>
+                        <group position='left'>
+                             <field name="name"/>
+                           <field name="father_name"/>
+                            <field name="date"/>
+                            <field name="nic_no"/>
+                            <field name="nationality"/>
+                            <field name="address"/>
+                            <field name="crn_issue"/> 
+                            <field name="obj_certificate"/> 
+                            <field name="obj_certificate_no"/> 
+                             
+                        </group>
+                        <group position='right'>
+                             <field name="p_address"/>
+                           <field name="mrs"/>
+                            <field name="training_org"/>
+                            <field name="org_address"/>
+                            <field name="crn_status"/>
+                            <field name="crn"/>
+                            <field name="prev_mrs"/> 
+                            <field name="place"/> 
+                            <field name="prob_place"/> 
+                            <field name="prev_training_org"/>
+                            <label for="period_start_served" string="Period Served"/>
+                            <div>
+                                        <field name="period_start_served" class="oe_inline"/> - <field name="period_end_served" class="oe_inline"/>
+                                    </div> 
+                                    <label for="probation_period_start" string="Probation Period"/>
+                            <div>
+                                        <field name="probation_period_start" class="oe_inline"/> - <field name="probation_period_end" class="oe_inline"/>
+                                    </div> 
+
+                        </group>
+                    </group>
+                    <notebook>
+                            <page string="Details of Education"> 
+                          <b>  Accadmic Education/Qualification  </b> 
+                                <field name="relation_id_3" nolabel='1'>
+                                    <tree editable="bottom">
+                                        <field name="exc_pass"/>
+                                        <field name="mnth_year"/>
+                                        <field name="grade"/>
+                                        <field name="board_uni"/>
+                                        
+                                    </tree>
+                                    </field>
+                      <b>  Professional Education/Qualification  </b> 
+                                <field name="relation_id_2" nolabel='1'>
+                                    <tree editable="bottom">
+                                        <field name="exe_pass"/>
+                                        <field name="month_year"/>
+                                        <field name="grade_div"/>
+                                        <field name="board_univ"/>
+                                        
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Details of Leave availed"> 
+                                <field name="relation_id_4" nolabel='1'>
+                                    <tree editable="bottom">
+                                        <field name="study"/>
+                                        <field name="sick"/>
+                                        <field name="others"/>
+                                        <field name="total"/>  
+                                    </tree>
+                                </field>
+                                </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!--  -->
+        <record model="ir.actions.act_window" id="hr_registration">
+            <field name="name">Registration</field>
+            <field name="res_model">hr.registration</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <!--  -->
+        <menuitem id="hr_menu_item_5" name="Statement for Registration" parent="hr.menu_hr_main" action="hr_registration"/>
+    </data>
+</openerp>

@@ -1,0 +1,77 @@
+<openerp>
+    <data>
+       
+        <record id="contract_tagm_detail" model="ir.ui.view">
+            <field name="name">contract_details_form_view</field>
+            <field name="model">hr.contract</field>
+            <field name="inherit_id" ref="hr_contract.hr_contract_view_form"/>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@string='Work Permit']" position="after">
+                 <page string="Allowances">
+                    <sheet>                        
+                        <group name="group_top">
+                            <group name="group_left">
+                           
+                            <field name="xx_mobile"/>
+                            <field name="replacement"/>
+                            <field name="special"/>
+                            <field name="xxx_other"/>
+                            
+                            </group>
+                            <group name="group_right">
+                            </group>
+                        </group>
+                    </sheet>
+                 </page>
+
+                 <page string="Deductions">
+                    <sheet>                        
+                        <group name="group_top">
+                            <group name="group_left">
+                            
+                                <field name="tax"/>
+                                <field name="leave"/>
+                                <field name="provident_fund"/>
+                                <field name="xx_other"/>
+                           
+                            </group>
+                            <group name="group_right">
+                            </group>
+                        </group>
+                    </sheet>
+                 </page>
+             </xpath>
+            </field>
+        </record>
+        <!--  -->
+        <!--  -->
+
+                 <act_window id="act_qunar_product_expense_merge_wizard" name="Refresh Contract" src_model="hr.contract" res_model="test.refresh" key2="client_action_multi" target="new" view_mode="form" multi="True"/>
+
+        <record id="wizard_new_contract" model="ir.ui.view">
+            <field name="name">wizard_new_contract</field>
+            <field name="model">test.refresh</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Hi i am refresh wizard">
+                    <h1>
+                        Refresh Contracts
+                    </h1>
+                    <footer>
+                        <button name="contract_refresh" 
+                            type="object" 
+                            string="Done" 
+                            class="oe_highlight"/>
+                        <button string="Cancel" 
+                            class="btn-default" 
+                            special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+
+      
+    </data>
+</openerp>

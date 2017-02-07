@@ -1,0 +1,445 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <template id="report_hryearlysalary">
+           
+            <t t-call="report.html_container">
+            <t t-call="report.external_layout">
+         <!--        <t t-name="report.external_layout_header">
+    <div class="header">
+        <div class="row">
+            <div class="col-xs-3">
+                <img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % company.logo" style="max-height: 45px;"/>
+            </div>
+        </div>
+    </div>
+</t> -->
+                    <div class="page" style="font-size: 7pt;">
+                        <h2>Tariq Abdul Ghani Maqbool &amp; Co.</h2><br/>
+                        <h2>Chartered Accountants</h2><br/>
+                        <h2 >Salary Sheet For <strong style="text-decoration: underline;"><t t-esc="get_periods(data['form'])">  </t></strong></h2>
+                        <style>
+                            table thead tr th,
+                            table tr td {
+                                text-align: center;
+                                vertical-align: middle !important;
+                                padding: 3px !important;
+                            }
+                            table thead tr th,
+                            table tr td {
+                                min-width: 35px;   
+                            }
+                            table thead tr th:nth-child(2),
+                            table tr td:nth-child(2) {
+                                min-width: 130px;
+                                font-weight: bold;
+                            }
+                            
+                            table thead tr th:nth-child(5),
+                            table tr td:nth-child(5) {
+                                min-width: 70px;
+                            }
+                            table thead tr th:nth-child(16),
+                            table tr td:nth-child(16),
+                            table thead tr th:nth-child(17),
+                            table tr td:nth-child(17),
+                            table thead tr th:nth-child(21),
+                            table tr td:nth-child(21),
+                            table thead tr th:nth-child(22),
+                            table tr td:nth-child(22),
+                            table thead tr th:nth-child(11),
+                            table tr td:nth-child(11),
+                            table thead tr th:nth-child(29),
+                            table tr td:nth-child(29) {
+                                min-width: 10px;
+                            }
+                        </style>
+
+                        <table class="table table-condensed table-bordered">
+                            <thead>
+                                <tr style="border: 1px solid grey;">
+                                    <th rowspan="2">Sr No.</th>
+                                    <th style="width:50px; align:left" rowspan="2">Name</th>
+                                    <th rowspan="2">Basic Salary</th>
+                                    <th colspan="4">Allowances</th>
+                                    <th rowspan="2">Gross Salary</th>
+                                    <th colspan="4">Deductions</th>
+                                    <th colspan="4">Advances to Employees</th>
+                                    <th rowspan="2">Net Salary</th>
+                                    <th rowspan="2">Bank Account Detail</th>
+                                </tr>
+                                <tr>
+                                    <th>Mobile</th>
+                                    <th>Replacement</th>
+                                    <th>Special</th>
+                                    <th>Other</th>
+                                    <th>Tax u/s 149</th>
+                                    <th>Leave</th>
+                                    <th>Provident Fund</th>
+                                    <th>Other</th>
+                                    <th>Opening Balance</th>
+                                    <th>Addition for the Month</th>
+                                    <th>Settle during the Month</th>
+                                    <th>Closing Balance</th>
+                                    
+                                    
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-set="i" t-value="1"/> 
+                                <t t-set="total_salary" t-value="0" />
+                                <t t-set="basic_salary" t-value="0" />
+                                <t t-set="house_rent" t-value="0" />
+                                <t t-set="utility" t-value="0" />
+                                <t t-set="bonus" t-value="0" />
+                                <t t-set="pf" t-value="0" />
+                                <t t-set="tax" t-value="0" />
+                                <t t-set="gross_salary" t-value="0" />
+                                <t t-set="p_tax" t-value="0" />
+                                <t t-set="sr_fund" t-value="0" />
+                                <t t-set="eobi" t-value="0" />
+                                <t t-set="loan" t-value="0" />
+                                <t t-set="food_expense" t-value="0" />
+                                <t t-set="vehicle_run" t-value="0" />
+                                <t t-set="other" t-value="0" />
+                                <t t-set="total_ded" t-value="0" />
+                                <t t-set="med_opd" t-value="0" />
+                                <t t-set="fuel_other" t-value="0" />
+                                <t t-set="overtime" t-value="0" />
+                                <t t-set="sr" t-value="0" />
+                                <t t-set="mob_exp" t-value="0" />
+                                <t t-set="other_other" t-value="0" />
+                                <t t-set="total" t-value="0" />
+                                <t t-set="net" t-value="0" />
+                                <t t-foreach="get_employee(data['form'])" t-as="employee">
+                                <tr style="font-weight: bold; background-color: #D3D3D3; font-size: 15px;"> 
+                                   <!--  <td colspan="32">
+                                        <span t-esc="employee['cost_centre']"/>
+                                    </td> -->
+                                </tr>
+                                <t t-set="ztotal_salary" t-value="0" />
+                                <t t-set="zbasic_salary" t-value="0" />
+                                <t t-set="zhouse_rent" t-value="0" />
+                                <t t-set="zutility" t-value="0" />
+                                <t t-set="zbonus" t-value="0" />
+                                <t t-set="zpf" t-value="0" />
+                                <t t-set="ztax" t-value="0" />
+                                <t t-set="zgross_salary" t-value="0" />
+                                <t t-set="zp_tax" t-value="0" />
+                                <t t-set="zsr_fund" t-value="0" />
+                                <t t-set="zeobi" t-value="0" />
+                                <t t-set="zloan" t-value="0" />
+                                <t t-set="zfood_expense" t-value="0" />
+                                <t t-set="zvehicle_run" t-value="0" />
+                                <t t-set="zother" t-value="0" />
+                                <t t-set="ztotal_ded" t-value="0" />
+                                <t t-set="zmed_opd" t-value="0" />
+                                <t t-set="zfuel_other" t-value="0" />
+                                <t t-set="zovertime" t-value="0" />
+                                <t t-set="zsr" t-value="0" />
+                                <t t-set="zmob_exp" t-value="0" />
+                                <t t-set="zother_other" t-value="0" />
+                                <t t-set="ztotal" t-value="0" />
+                                <t t-set="znet" t-value="0" />    
+                                <tr t-foreach="get_employee_detail(employee['employee_idss'])"  t-as="data" > 
+                                    <td>
+                                        <t t-esc="i"/>
+                                        <t t-set="i" t-value="i+1"/>
+                                    </td>
+                                   
+                                    <td>
+                                        <t t-if="data.employee_id.name">
+                                            <span t-field="data.employee_id.name"/>
+                                        </t>
+                                    </td>
+                                    <td> 
+                                        <t t-foreach="data.details_by_salary_rule_category"  t-as="info">
+                                            <t t-if="info.code == 'BASIC'">
+                                                <t t-if="info.total == 0">
+                                                    <span>-</span>
+                                                </t>
+                                                <t t-if="info.total != 0">
+                                                    <span t-esc="'{:0,}'.format(int(float(info.total)))"/>
+                                                </t>
+                                                <t t-set="basic_salary" t-value="basic_salary+info.total" />
+                                                <t t-set="zbasic_salary" t-value="zbasic_salary+info.total" />
+                                            </t>
+                                        </t>
+                                    </td>
+                                    <td> 
+                                        <t t-foreach="data.details_by_salary_rule_category"  t-as="info">
+                                            <t t-if="info.code == 'MB'">
+                                                <t t-if="info.total == 0">
+                                                    <span>-</span>
+                                                </t>
+                                                <t t-if="info.total != 0">
+                                                    <span t-esc="'{:0,}'.format(int(float(info.total)))"/>
+                                                </t>
+                                                <t t-set="mob_exp" t-value="mob_exp+info.total" />
+                                                <t t-set="zmob_exp" t-value="zmob_exp+info.total" />
+                                            </t>
+                                        </t>
+                                    </td>
+                                    
+                                    <td> 
+                                        <t t-foreach="data.details_by_salary_rule_category"  t-as="info">
+                                            <t t-if="info.code == 'RP'">
+                                                <t t-if="info.total == 0">
+                                                    <span>-</span>
+                                                </t>
+                                                <t t-if="info.total != 0">
+                                                    <span t-esc="'{:0,}'.format(int(float(info.total)))"/>
+                                                </t>
+                                                <t t-set="food_expense" t-value="food_expense+info.total" />
+                                                <t t-set="zfood_expense" t-value="zfood_expense+info.total" />
+                                            </t>
+                                        </t>
+                                    </td>
+                                    <td> 
+                                        <t t-foreach="data.details_by_salary_rule_category"  t-as="info">
+                                            <t t-if="info.code == 'SP'">
+                                                <t t-if="info.total == 0">
+                                                    <span>-</span>
+                                                </t>
+                                                <t t-if="info.total != 0">
+                                                    <span t-esc="'{:0,}'.format(int(float(info.total)))"/>
+                                                </t>
+                                                <t t-set="vehicle_run" t-value="vehicle_run+info.total" />
+                                                <t t-set="zvehicle_run" t-value="zvehicle_run+info.total" />
+                                            </t>
+                                        </t>
+                                    </td>
+                                  
+                                    <td> 
+                                        <t t-foreach="data.details_by_salary_rule_category"  t-as="info">
+                                            <t t-if="info.code == 'OT'">
+                                                <t t-if="info.total == 0">
+                                                    <span>-</span>
+                                                </t>
+                                                <t t-if="info.total != 0">
+                                                    <span t-esc="'{:0,}'.format(int(float(info.total)))"/>
+                                                </t>
+                                                <t t-set="house_rent" t-value="house_rent+info.total" />
+                                                <t t-set="zhouse_rent" t-value="zhouse_rent+info.total" />
+                                            </t>
+                                        </t>
+                                    </td>
+                                    <td> 
+                                        <t t-foreach="data.details_by_salary_rule_category"  t-as="info">
+                                            <t t-if="info.code == 'GROSS'">
+                                                <t t-if="info.total == 0">
+                                                    <span>-</span>
+                                                </t>
+                                                <t t-if="info.total != 0">
+                                                    <span t-esc="'{:0,}'.format(int(float(info.total)))"/>
+                                                </t>
+                                                <t t-set="gross_salary" t-value="gross_salary+info.total" />
+                                                <t t-set="zgross_salary" t-value="zgross_salary+info.total" />
+                                            </t>
+                                        </t>
+                                    </td>
+                                    <td> 
+                                        <t t-foreach="data.details_by_salary_rule_category"  t-as="info">
+                                            <t t-if="info.code == 'T149'">
+                                                <t t-if="info.total == 0">
+                                                    <span>-</span>
+                                                </t>
+                                                <t t-if="info.total != 0">
+                                                    <span t-esc="'{:0,}'.format(int(float(info.total)))"/>
+                                                </t>
+                                                <t t-set="utility" t-value="utility+info.total" />
+                                                <t t-set="zutility" t-value="zutility+info.total" />
+                                            </t>
+                                        </t>
+                                    </td>
+                                    <td> 
+                                        <t t-foreach="data.details_by_salary_rule_category"  t-as="info">
+                                            <t t-if="info.code == 'LV'">
+                                                <t t-if="info.total == 0">
+                                                    <span>-</span>
+                                                </t>
+                                                <t t-if="info.total != 0">
+                                                    <span t-esc="'{:0,}'.format(int(float(info.total)))"/>
+                                                </t>
+                                                <t t-set="bonus" t-value="bonus+info.total" />
+                                                <t t-set="zbonus" t-value="zbonus+info.total" />
+                                            </t>
+                                        </t>
+                                    </td>
+                                    <td> 
+                                        <t t-foreach="data.details_by_salary_rule_category"  t-as="info">
+                                            <t t-if="info.code == 'PV'">
+                                                <t t-if="info.total == 0">
+                                                    <span>-</span>
+                                                </t>
+                                                <t t-if="info.total != 0">
+                                                    <span t-esc="'{:0,}'.format(int(float(info.total)))"/>
+                                                </t>
+                                                <t t-set="pf" t-value="pf+info.total" />
+                                                <t t-set="zpf" t-value="zpf+info.total" />
+                                            </t>
+                                        </t>
+                                    </td>
+                                    <td> 
+                                        <t t-foreach="data.details_by_salary_rule_category"  t-as="info">
+                                            <t t-if="info.code == 'OTD'">
+                                                <t t-if="info.total == 0">
+                                                    <span>-</span>
+                                                </t>
+                                                <t t-if="info.total != 0">
+                                                    <span t-esc="'{:0,}'.format(int(float(info.total)))"/>
+                                                </t>
+                                                <t t-set="tax" t-value="tax+info.total" />
+                                                <t t-set="ztax" t-value="ztax+info.total" />
+                                            </t>
+                                        </t>
+                                    </td>
+                                    <td> 
+                                        <t t-foreach="data.details_by_salary_rule_category"  t-as="info">
+                                            <t t-if="info.code == 'OB'">
+                                                <t t-if="info.total == 0">
+                                                    <span>-</span>
+                                                </t>
+                                                <t t-if="info.total != 0">
+                                                    <span t-esc="'{:0,}'.format(int(float(info.total)))"/>
+                                                </t>
+                                                <t t-set="p_tax" t-value="p_tax+info.total" />
+                                                <t t-set="zp_tax" t-value="zp_tax+info.total" />
+                                            </t>
+                                        </t>
+                                    </td>
+                                    <td> 
+                                        <t t-foreach="data.details_by_salary_rule_category"  t-as="info">
+                                            <t t-if="info.code == 'ATM'">
+                                                <t t-if="info.total == 0">
+                                                    <span>-</span>
+                                                </t>
+                                                <t t-if="info.total != 0">
+                                                    <span t-esc="'{:0,}'.format(int(float(info.total)))"/>
+                                                </t>
+                                                <t t-set="sr_fund" t-value="sr_fund+info.total" />
+                                                <t t-set="zsr_fund" t-value="zsr_fund+info.total" />
+                                            </t>
+                                        </t>
+                                    </td>
+                                    <td> 
+                                        <t t-foreach="data.details_by_salary_rule_category"  t-as="info">
+                                            <t t-if="info.code == 'SDM'">
+                                                <t t-if="info.total == 0">
+                                                    <span>-</span>
+                                                </t>
+                                                <t t-if="info.total != 0">
+                                                    <span t-esc="'{:0,}'.format(int(float(info.total)))"/>
+                                                </t>
+                                                <t t-set="eobi" t-value="eobi+info.total" />
+                                                <t t-set="zeobi" t-value="zeobi+info.total" />
+                                            </t>
+                                        </t>
+                                    </td>
+                                    <td> 
+                                        <t t-foreach="data.details_by_salary_rule_category"  t-as="info">
+                                            <t t-if="info.code == 'CB'">
+                                                <t t-if="info.total == 0">
+                                                    <span>-</span>
+                                                </t>
+                                                <t t-if="info.total != 0">
+                                                    <span t-esc="'{:0,}'.format(int(float(info.total)))"/>
+                                                </t>
+                                                <t t-set="loan" t-value="loan+info.total" />
+                                                <t t-set="zloan" t-value="zloan+info.total" />
+                                            </t>
+                                        </t>
+                                    </td>
+                                    <td> 
+                                        <t t-foreach="data.details_by_salary_rule_category"  t-as="info">
+                                            <t t-if="info.code == 'NET'">
+                                                <t t-if="info.total == 0">
+                                                    <span>-</span>
+                                                </t>
+                                                <t t-if="info.total != 0">
+                                                    <span t-esc="'{:0,}'.format(int(float(info.total)))"/>
+                                                </t>
+                                                <t t-set="net" t-value="net+info.total" />
+                                                <t t-set="znet" t-value="znet+info.total" />
+                                            </t>
+                                        </t>
+                                    </td>
+                                    <td>
+                                        <t t-if="data.employee_id.name">
+                                            <span t-field="data.employee_id.bank_account_id"/>
+                                        </t>
+                                    </td>
+                                </tr>
+                               
+                            </t>
+                                <tr>
+                                    <td> Total</td>
+                                    <td></td>
+                                    <td>
+                                        
+                                        <span t-esc="'{:0,}'.format(int(float(basic_salary)))"/>
+                                    </td> 
+                                     <td>    
+                                        <span t-esc="'{:0,}'.format(int(float(mob_exp)))"/>
+                                    </td>  
+                                    <td>    
+                                        
+                                        <span t-esc="'{:0,}'.format(int(float(food_expense)))"/>
+                                    </td>
+                                 
+                                    <td>
+                                        <span t-esc="'{:0,}'.format(int(float(vehicle_run)))"/>
+                                    </td>
+                                    <td>    
+                                        
+                                        <span t-esc="'{:0,}'.format(int(float(house_rent)))"/>
+                                    </td>
+                                     <td>
+                                        
+                                        <span t-esc="'{:0,}'.format(int(float(gross_salary)))"/>
+                                    </td>  
+                                    <td>    
+                                        
+                                        <span t-esc="'{:0,}'.format(int(float(utility)))"/>
+                                    </td>
+                                    <td>
+                                        
+                                        <span t-esc="'{:0,}'.format(int(float(bonus)))"/>
+                                    </td>    
+                                    <td>
+                                       
+                                        <span t-esc="'{:0,}'.format(int(float(pf)))"/>
+                                    </td>
+                                    <td>    
+                                        
+                                        <span t-esc="'{:0,}'.format(int(float(tax)))"/>
+                                    </td>    
+                                    <td>    
+                                     
+                                        <span t-esc="'{:0,}'.format(int(float(p_tax)))"/>
+                                    </td>
+                                    <td>    
+                                        
+                                        <span t-esc="'{:0,}'.format(int(float(sr_fund)))"/>
+                                    </td>
+                                    <td>    
+                                        
+                                        <span t-esc="'{:0,}'.format(int(float(eobi)))"/>
+                                    </td>
+                                    <td>    
+                                        
+                                        <span t-esc="'{:0,}'.format(int(float(loan)))"/>
+                                    </td>    
+                                    <td>
+                                        <span t-esc="'{:0,}'.format(int(float(net)))"/>
+                                    </td>  
+                                    <td></td>  
+                                </tr> 
+                            </tbody>
+                        </table>          
+                    </div> 
+            </t>
+        </t>
+        </template>
+    </data>
+</openerp>

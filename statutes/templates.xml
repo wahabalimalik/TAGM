@@ -1,0 +1,131 @@
+<openerp>
+    <data>
+        <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%Income Tax Ordinance 2001%%%%%%%%%%%%%%%% -->
+            <!--========================[Form View-START]=====================-->
+       
+                <record id="Income_Tax_Ordinance_2001_detail" model="ir.ui.view">
+                    <field name="name">Income_Tax_Ordinance_2001</field>
+                    <field name="model">income_tax_ordinance_2001.income_tax_ordinance_2001</field>
+                    <field name="arch" type="xml">
+                        <form string="Income_Tax_Ordinance_2001">
+                            <sheet>
+                                <group name="group_top">
+                                    <group name="group_left">
+                                        <field name="section_name"/>
+                                        <field name="section_no"/>
+                                        <field name="schedule_no"/>
+                                       <field name="part_no"/>
+                                        <field name="division_no"/>
+                                        <field name="vv" invisible ='True'/>
+                                    </group>
+                                    <group name="group_right">
+                                        <field name="date_applicable"/>
+                                        <field name="date_inactive"/>
+                                        <field name="related_sections"/>
+                                        <field name="related_rules"/>
+                                    </group>
+                                </group>
+                                <label for="note" string="Description"/>
+                                <field name="description"/>
+                                <label for="note" string="Note"/>
+                                <field name="note"/>
+                            </sheet>
+                        </form>
+                    </field>
+                </record>
+            <!--************************[Form View-ENDS]**********************-->
+            
+            <!--========================[Tree View-START]=====================-->
+                
+                <record id="Income_Tax_Ordinance_2001_list_tree" model="ir.ui.view">
+                    <field name="name">Income_Tax_Ordinance_2001 Tree</field>
+                    <field name="model">income_tax_ordinance_2001.income_tax_ordinance_2001</field>
+                    <field name="arch" type="xml">
+                        <tree string="Income Tax Ordinance, 2001">
+                            <field name="section_name"/>
+                            <field name="section_no"/>
+                            <field name="description"/>
+                        </tree>              
+                    </field>
+                </record>
+            <!--************************[Tree View-ENDS]**********************-->
+
+            <!--========================[Action-START]========================-->
+
+                 <act_window id="action_statutes_child_child_1"
+                    name="Income Tax Ordinance, 2001"
+                    res_model="income_tax_ordinance_2001.income_tax_ordinance_2001"
+                    view_mode="tree,form" />
+            <!--************************[Action-ENDS]*************************-->
+
+            <!--========================[Menu-START]==========================-->
+
+                <menuitem name="Statutes" id="statutes"  sequence="0"/>.
+                <menuitem name="Statutes" id="statutes_child" parent="statutes"  sequence="0"/>
+                <menuitem name="Income Tax Ordinance 2001" id="income_tax_ordinance_2001" parent="statutes_child" action="action_statutes_child_child_1"/>
+            <!--************************[Menu-ENDS]***************************-->
+        <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+        <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%Sales Tax Act, 1990%%%%%%%%%%%%%%%%%% -->
+
+            <!--========================[Form View-START]=====================-->
+       
+                <record id="sales_tax_act_1990_detail" model="ir.ui.view">
+                    <field name="name">sales_tax_act_1990</field>
+                    <field name="model">sales_tax_act_1990.sales_tax_act_1990</field>
+                    <field name="arch" type="xml">
+                        <form string="Sales Tax Act, 1990">
+                            <sheet>
+                                <group name="group_top">
+                                    <group name="group_left">
+                                        <field name="section_name"/>
+                                        <field name="section_no"/>
+                                    </group>
+                                    <group name="group_right">
+                                        <field name="date_applicable"/>
+                                        <field name="date_inactive"/>
+                                        <field name="related_sections"/>
+                                        <field name="related_rules"/>
+                                        <field name="vv" invisible ='True'/>
+                                    </group>
+                                </group>
+                                <label for="note" string="Description"/>
+                                <field name="description"/>
+                                <label for="note" string="Note"/>
+                                <field name="note"/>
+                            </sheet>
+                        </form>
+                    </field>
+                </record>
+            <!--************************[Form View-ENDS]**********************-->
+            
+            <!--========================[Tree View-START]=====================-->
+                
+                <record id="sales_tax_act_1990_list_tree" model="ir.ui.view">
+                    <field name="name">sales_tax_act_1990_Tree</field>
+                    <field name="model">sales_tax_act_1990.sales_tax_act_1990</field>
+                    <field name="arch" type="xml">
+                        <tree string="Sales Tax Act, 1990">
+                            <field name="section_name"/>
+                            <field name="section_no"/>
+                            <field name="description"/>
+                        </tree>              
+                    </field>
+                </record>
+            <!--************************[Tree View-ENDS]**********************-->
+
+            <!--========================[Action-START]========================-->
+
+                 <act_window id="action_sales_tax_act_1990"
+                    name="Sales Tax Act, 1990"
+                    res_model="sales_tax_act_1990.sales_tax_act_1990"
+                    view_mode="tree,form" />
+            <!--************************[Action-ENDS]*************************-->
+
+            <!--========================[Menu-START]==========================-->
+
+                <menuitem name="Sales Tax Act, 1990" id="sales_tax_act_1990" parent="statutes_child" action="action_sales_tax_act_1990"/>
+            <!--************************[Menu-ENDS]***************************-->
+        <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+    </data>
+</openerp>

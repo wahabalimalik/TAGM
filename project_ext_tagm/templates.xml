@@ -1,0 +1,57 @@
+<openerp>
+    <data>
+        <record id="project_extension_form_view" model="ir.ui.view">
+            <field name="name">project.extension.form.inherit</field>
+            <field name="model">project.project</field>
+            <field name="inherit_id" ref="project.edit_project"/>
+            <field name="arch" type="xml">
+                <field name="partner_id" position="after">
+                    <field name="Deprtment"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="rep_field_view_form" model="ir.ui.view">
+            <field name="name">rep_field_view_form</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_form2"/>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <field name="user_id" position="replace">
+                    <field name="user_id" />
+                </field> 
+
+                <xpath expr="//field[@name='project_id']" position="replace">
+                    <field name="project_id" />
+                </xpath>
+
+                <!--<field name="reviewer_id" position="before">
+                    <field name="new_user_id"/>
+                    <field name="listy" invisible="1"/> 
+                </field>
+                
+
+                <xpath expr="//field[@name='project_id']" position="replace">
+                    <field name="project_id" invisible="1"/>
+                </xpath>
+
+                <field name="new_user_id" position="before">
+                    <field name="new_project_id"/>
+                    <field name="listy" invisible="1"/> 
+                </field> -->
+
+                <xpath expr="//field[@name='work_ids']" position="replace">
+                    <field name="work_ids" groups="project.group_tasks_work_on_tasks" context="{'default_project_id': project_id}" >
+                        <tree string="Task Work" editable="top">
+                            <field name="name"/>
+                            <field name="hours" widget="float_time" sum="Spent Hours"/>
+                            <field name="date"/>
+                            <field name="user_id" />
+                        </tree>
+                    </field>
+                </xpath>
+
+            </field>
+        </record>
+    </data>
+</openerp>
