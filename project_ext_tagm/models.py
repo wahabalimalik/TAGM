@@ -5,15 +5,18 @@ from openerp import models, fields, api
 class project_ext_tagm(models.Model):
 	_inherit = 'project.project'
 
-	Deprtment =  fields.Selection([
-		('Business Consulting', 'Business Consulting'),
-    	('Corporate Department', 'Corporate Department'),
-    	('Tax Department', 'Tax Department'),
-    	('Restainership', 'Retainership'),
-    	('Software', 'Software'),
-    	('Audit', 'Audit'),
-    	('Human Resource', 'Human Resource')
-    	], required=True)
+	department = fields.Many2one('hr.department', 'Department')
+
+	@api.onchange('department')
+	def _onchange_department_id(self):
+		user_ids = []
+		dept_id = self.department.id
+		result = self.env['hr.employee'].search([('department_id','=',dept_id)])
+		for x in result:
+			if(x.user_id):
+				user_ids.append(x.user_id.id)
+		
+		return {'domain':{'members': [('id', 'in', user_ids)],}}
 
 class project_ext_tagm_1(models.Model):
 	_inherit = 'project.task'
@@ -27,9 +30,7 @@ class project_ext_tagm_1(models.Model):
 		my_list  = [item.encode('utf-8') for item in my_list]
 		#self.listy = my_list
 		return {'domain':{'user_id': [('name', 'in', my_list)],}}
-
 	user_id = fields.Many2one('res.users',"Assigned to")
-
 	_defaults = {
 	'user_id': None ,
 	}	

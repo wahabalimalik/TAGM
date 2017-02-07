@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "parent_task",
+    'name': "main_task",
 
     'summary': """
-        Parent Task""",
+        Main Task""",
 
     'description': """
-        Parent Task 
+        Main Task 
     """,
 
     'author': "Wahab Ali Malik",

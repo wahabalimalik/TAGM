@@ -1,0 +1,47 @@
+<openerp>
+    <data>
+        <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%Main Task%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+            <!--========================[Form View-START]=====================-->
+ 
+                <record id="main_task_2_form_view" model="ir.ui.view">
+                    <field name="name">main_task_2_form_view</field>
+                    <field name="model">project.task</field>
+                    <field name="inherit_id" ref="project.view_task_form2"/>
+                    <field name="type">form</field>
+                    <field name="arch" type="xml">
+                        <xpath expr="//field[@name='categ_ids']" position="after">
+                            <field name="main_task_1"/>
+                            <field name="main_task_2" attrs="{'invisible': [('main_task_1','=',True)]}"/>
+                        </xpath>
+                    </field>
+                </record>
+            <!--************************[Form View-ENDS]**********************-->
+
+            <!--========================[Search View-START]=====================-->
+
+                <record id="main_task_2_search_view" model="ir.ui.view">
+                    <field name="name">main_task_2_search_view</field>
+                    <field name="model">project.task</field>
+                    <field name="inherit_id" ref="project.view_task_search_form"/>
+                    <field name="arch" type="xml">
+                        <!-- add your filtre at the end -->
+                            <xpath expr="filter[@string='New Mail']" position="after">
+                                <filter string="Task"
+                                        domain="[('main_task_1','=',False)]"/>
+                                <filter string="Main Task"
+                                        domain="[('main_task_1','!=',False)]"/>
+                            </xpath>
+
+                        <!-- add your group at the end -->
+                            <xpath expr="//filter[@string='Assignation Month']"
+                                position="after">
+                                <filter string="Main Task" domain="[('main_task_1','=',False)]" context="{'group_by':'main_task_2'}"/>
+                            </xpath>
+                    </field>
+                </record>
+            <!--************************[Search View-ENDS]**********************-->
+
+        <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+    </data>
+</openerp>
